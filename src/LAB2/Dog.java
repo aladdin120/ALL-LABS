@@ -4,6 +4,8 @@ public class Dog {
     private String name;
     private int age;
 
+    public Dog() {};
+
     public Dog(String name, int age){
         this.age = age;
         this.name = name;
@@ -23,6 +25,14 @@ public class Dog {
 
     public int getAge() {
         return age;
+    }
+
+    public int dogToPerson() {
+        return age*7;
+    }
+
+    public String toString() {
+        return "Имя: "+name+"; Возраст: "+age+"; 'Человеческий возраст': "+dogToPerson();
     }
 
 }
