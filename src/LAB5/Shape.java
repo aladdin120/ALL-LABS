@@ -1,18 +1,23 @@
 package LAB5;
 
 public abstract class Shape {
-    private int S;
-    private int P;
+    private double S;
+    private double P;
 
-    public int getS() {
+    public double getS() {
         return S;
     }
 
-    abstract void setS(int s);
+    public void setS(double s) {
+        S = s;
+    }
 
-    public int getP() {
+    public double getP() {
         return P;
     }
 
-    abstract void setP(int p);
+    public void setP(double p) {
+        P = p;
+    }
+
 }
