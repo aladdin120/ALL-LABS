@@ -1,8 +1,7 @@
 package LAB6;
 
-import LAB5.Shape;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape{
     private double a, b;
 
     public double getA() {
