@@ -13,12 +13,12 @@ public class MovablePoints extends MovableRectangle{
     }
 
 
-    public boolean checkSpeed(MovablePoints left, MovablePoints right)
+    public String checkSpeed(MovablePoints left, MovablePoints right)
     {
         if(left.speed == right.speed)
-            return true;
+            return "Скорость одинаковая";
         else
-            return false;
+            return "Скорость разная";
     }
 
     @Override

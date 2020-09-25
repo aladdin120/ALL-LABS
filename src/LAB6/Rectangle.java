@@ -20,6 +20,8 @@ public class Rectangle extends Shape{
         this.b = b;
     }
 
+    Rectangle(){ }
+
     public Rectangle(int a, int b) {
         this.a = a;
         this.b = b;

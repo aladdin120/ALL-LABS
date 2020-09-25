@@ -1,9 +1,9 @@
 package LAB6;
 
-public class MovableRectangle implements Movable {
+public class MovableRectangle extends Rectangle implements Movable {
 
 
-    MovableRectangle(){}
+    MovableRectangle(){ }
 
     @Override
     public String data() {
