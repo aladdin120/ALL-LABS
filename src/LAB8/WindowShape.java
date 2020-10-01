@@ -9,56 +9,21 @@ public class WindowShape extends JFrame {
     Graphics g;
     final Random random = new Random();
 
-    public Color randomColor() {
-        int num = random.nextInt(8);
-
-        switch (num) {
-            case 0: {
-                return Color.blue;
-            }
-
-            case 1: {
-                return Color.PINK;
-            }
-
-            case 2: {
-                return Color.magenta;
-            }
-
-            case 3: {
-                return Color.orange;
-            }
-
-            case 4: {
-                return Color.YELLOW;
-            }
-
-            case 5: {
-                return Color.cyan;
-            }
-
-            case 6: {
-                return Color.green;
-            }
-
-            case 7: {
-                return Color.lightGray;
-            }
-
-            default: {
-                return Color.red;
-            }
-        }
-    }
 
     public WindowShape() {
         JFrame frame = new JFrame("Фигуры");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JLayeredPane lp = getLayeredPane();
+        JPanel panel = new JPanel();
 
 
         for (int i = 0; i < 20; i++) {
             int num = random.nextInt(5);
+            int c1 = random.nextInt(255);
+            int c2 = random.nextInt(255);
+            int c3 = random.nextInt(255);
+            Color color = new Color(c1, c2, c3);
+
             System.out.println(num);
             int y = 5;
             int x = 105*i;
@@ -69,11 +34,11 @@ public class WindowShape extends JFrame {
             }
 
             if (num == 0 || num == 1 || num == 2) {
-                Rectangle rectangle = new Rectangle(randomColor(), num, 0, 0);
+                Rectangle rectangle = new Rectangle(color, num, 0, 0);
                 rectangle.setBounds(x, y, 100, 100);
                 lp.add(rectangle, JLayeredPane.PALETTE_LAYER);
             } else {
-                Circle circle = new Circle(randomColor(), num, 0, 0);
+                Circle circle = new Circle(color, num, 0, 0);
                 circle.setBounds(x, y, 100, 100);
                 lp.add(circle, JLayeredPane.PALETTE_LAYER);
             }
