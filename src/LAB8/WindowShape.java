@@ -2,17 +2,16 @@ package LAB8;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Random;
 
 public class WindowShape extends JFrame {
 
     Graphics g;
     final Random random = new Random();
+    Container container = getContentPane();
 
-
-    public WindowShape() {
-        JFrame frame = new JFrame("Фигуры");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    public void GetShape() {
         JLayeredPane lp = getLayeredPane();
         JPanel panel = new JPanel();
 
@@ -24,7 +23,6 @@ public class WindowShape extends JFrame {
             int c3 = random.nextInt(255);
             Color color = new Color(c1, c2, c3);
 
-            System.out.println(num);
             int y = 5;
             int x = 105*i;
 
@@ -43,9 +41,34 @@ public class WindowShape extends JFrame {
                 lp.add(circle, JLayeredPane.PALETTE_LAYER);
             }
         }
+    }
+
+    public WindowShape() {
+        JFrame frame = new JFrame("Фигуры");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        container.setLayout(new FlowLayout());
+        Action action = new SimpleAction();
+
+        JButton button = new JButton(action);
+        button.setName("BUTTON");
+        button.setText("Press me");
+        button.setPreferredSize(new Dimension(300, 100));
+        container.add(button);
 
         setSize(1050, 550);
         setVisible(true);
+    }
+
+    class SimpleAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton button = (JButton) e.getSource();
+            container.remove(button);
+            GetShape();
+
+        }
     }
 
     public static void main(String[] args) {
