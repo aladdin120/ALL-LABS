@@ -1,8 +1,9 @@
 package LAB13;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
-public class SortingByGPA implements Comparator<Student> {
+public class SortingByGPA  implements Comparator<Student> {
 
     @Override
     public int compare(Student o1, Student o2) {

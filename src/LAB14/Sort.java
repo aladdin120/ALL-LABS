@@ -1,12 +1,8 @@
 package LAB14;
 
-import LAB12.Menu;
+public class Sort {
 
-public class SortingStudentsByGPA {
-
-
-
-    public void QuickSort(double[] array, int low, int high) {
+    public void QuickSort(Student[] array, int low, int high) {
         if (array.length == 0)
             return;
 
@@ -14,20 +10,20 @@ public class SortingStudentsByGPA {
             return;
 
         int middle = low + (high - low) / 2;
-        double opora = array[middle];
+        Student opora = array[middle];
 
         int i = low, j = high;
         while (i <= j) {
-            while (array[i] > opora) {
+            while (array[i].getGpa() > opora.getGpa()) {
                 i++;
             }
 
-            while (array[j] < opora) {
+            while (array[j].getGpa() < opora.getGpa()) {
                 j--;
             }
 
             if (i <= j) {
-                double temp = array[i];
+                Student temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
                 i++;
@@ -43,7 +39,7 @@ public class SortingStudentsByGPA {
     }
 
 
-    public void MergeSort(double[] arr, int l, int r) {
+    public void MergeSort(Student[] arr, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
 
@@ -55,12 +51,12 @@ public class SortingStudentsByGPA {
     }
 
 
-    public void Merge(double[] arr, int l, int m, int r) {
+    public void Merge(Student[] arr, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
 
-        double[] L = new double[n1];
-        double[] R = new double[n2];
+        Student[] L = new Student[n1];
+        Student[] R = new Student[n2];
 
         for (int i = 0; i < n1; ++i)
             L[i] = arr[l + i];
@@ -71,7 +67,7 @@ public class SortingStudentsByGPA {
 
         int k = l;
         while (i < n1 && j < n2) {
-            if (L[i] >= R[j]) {
+            if (L[i].getGpa() >= R[j].getGpa()) {
                 arr[k] = L[i];
                 i++;
             }

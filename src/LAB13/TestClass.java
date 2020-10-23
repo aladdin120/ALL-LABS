@@ -1,16 +1,15 @@
 package LAB13;
 
-import LAB14.SortingStudentsByGPA;
-
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class TestClass {
 
     Student[] array = new Student[5];
+    Student[] arrayT;
     String[] names = {"Alex", "Lila", "Ivan", "Dima", "Kate"};
     String name, id, gpa;
-    SortingStudentsByGPA t1 = new SortingStudentsByGPA();
+    SortingByGPA t1 = new SortingByGPA();
 
 
     public TestClass() {
@@ -19,7 +18,7 @@ public class TestClass {
         System.out.println("Original list of Students");
         output();
         SortByID();
-
+        SortByGPA();
     }
 
     public void output() {
@@ -47,7 +46,8 @@ public class TestClass {
 
     private void SortByGPA() {
         System.out.println("\n\nSorting list of Students by GPA");
-        Arrays.sort(array);
+        SortingByGPA t1 = new SortingByGPA();
+        Arrays.sort(array, t1);
         output();
     }
 }
