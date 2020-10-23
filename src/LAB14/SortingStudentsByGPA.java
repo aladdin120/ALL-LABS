@@ -1,11 +1,11 @@
-package LAB13;
+package LAB14;
 
 import LAB12.Menu;
 
-public class SortingStudentsByGPA  implements Comparator{
+public class SortingStudentsByGPA {
 
 
-    @Override
+
     public void QuickSort(double[] array, int low, int high) {
         if (array.length == 0)
             return;
@@ -42,7 +42,7 @@ public class SortingStudentsByGPA  implements Comparator{
             QuickSort(array, i, high);
     }
 
-    @Override
+
     public void MergeSort(double[] arr, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
@@ -54,7 +54,7 @@ public class SortingStudentsByGPA  implements Comparator{
         }
     }
 
-    @Override
+
     public void Merge(double[] arr, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
