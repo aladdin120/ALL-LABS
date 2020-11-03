@@ -67,7 +67,6 @@ public class WindowShape extends JFrame {
             JButton button = (JButton) e.getSource();
             container.remove(button);
             GetShape();
-
         }
     }
 
