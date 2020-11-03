@@ -19,7 +19,7 @@ public class Tasks {
     }
 
     public void SecondTask(String name) {
-        StringBuffer reverse = new StringBuffer(name);
+        StringBuilder reverse = new StringBuilder(name);
         reverse.reverse();
         if(name.equals(reverse.toString()))
             System.out.println("YES");
