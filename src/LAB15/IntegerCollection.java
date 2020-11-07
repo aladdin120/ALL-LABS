@@ -1,88 +1,164 @@
 package LAB15;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class IntegerCollection {
 
-    private List<Integer> array;
+    static class list {
+        public int data;
+        list next = null;
+        list head = null;
+        list prev = null;
+
+        list() {}
+        list(int data, list head, list prev) {
+            this.data = data;
+            this.head = head;
+            this.prev = prev;
+        }
+    }
+
+    list current;
 
     public IntegerCollection() {
-        array = new ArrayList<>();
+        current = new list();
     }
 
     public void push(int data) {
-        array.add(data);
+        if (current.head == null) {
+            current.data = data;
+            current.head = current;
+        } else {
+            current = current.head;
+            while(current.next != null)
+                current = current.next;
+            current.next = new list(data, current.head, current);
+        }
         System.out.printf("Element %d successfully add to collection\n", data);
     }
 
     public void delete(int data) {
-        if(array.contains(data)) {
-            int index = array.indexOf(data);
-            array.remove(index);
-            System.out.printf("Element %d successfully delete from collection\n", data);
-        } else
-            System.out.printf("Element %d is not contained in the collection\n", data);
+        current = current.head;
+        while (true){
+            if(current.data == data){
+                current = current.prev;
+                current.next = current.next.next;
+                current = current.next;
+                current.prev = current.prev.prev;
+                System.out.printf("Element %d successfully delete from collection\n", data);
+                break;
+            }
+            if(current.next == null) {
+                System.out.printf("Element %d is not contained in the collection\n", data);
+                break;
+            }
+            current = current.next;
+        }
     }
 
-    public  boolean search(int data) {
-        if(array.contains(data)) {
-            System.out.printf("Index of element %d is %d\n", data, array.indexOf(data));
-            return true;
+    public  void search(int data) {
+        int i = -1;
+        current = current.head;
+        while (true){
+            i++;
+            if(current.data == data){
+                System.out.printf("Index of element %d is %d\n", data, i);
+                break;
+            }
+            if(current.next == null) {
+                System.out.printf("Element %d is not contained in the collection\n", data);
+                break;
+            }
+            current = current.next;
         }
-        System.out.printf("Element %d is not contained in the collection\n", data);
-        return false;
     }
 
-    public boolean searchForIndex(int index) {
-        if(array.size() >= index) {
-            System.out.printf("Under index %d is the element %d\n", index, array.get(index));
-            return true;
+    public void searchForIndex(int index) {
+        current = current.head;
+        for(int i = 0; i < index; i++){
+            if(current.next == null) {
+                System.out.printf("Under index %d is not element\n", index);
+                return;
+            }
+            current = current.next;
         }
-        System.out.printf("Under index %d is not element\n", index);
-        return false;
+        System.out.printf("Under index %d is the element %d\n", index, current.data);
     }
 
     public int maxElem() {
-        if(array.isEmpty()) {
+        current = current.head;
+        if(current == null) {
             System.out.println("Collection is empty\n");
             return 0;
         }
         else {
-            int max = Collections.max(array);
+            int max = 0;
+            while (true){
+                max = Math.max(current.data, max);
+                if(current.next == null)
+                    break;
+                current= current.next;
+            }
             System.out.printf("Maximum element in collection is %d\n", max);
             return max;
         }
     }
 
     public int minElem() {
-        if(array.isEmpty()) {
+        current = current.head;
+        if(current == null) {
             System.out.println("Collection is empty\n");
             return 0;
         }
         else {
-            int min = Collections.min(array);
+            int min = maxElem();
+            current = current.head;
+            while (true){
+                min = Math.min(current.data, min);
+                if(current.next == null)
+                    break;
+                current= current.next;
+            }
             System.out.printf("Minimum element in collection is %d\n", min);
             return min;
         }
     }
 
-    public int average() {
-        if(array.isEmpty()) {
+    public float average() {
+        current = current.head;
+        if(current == null) {
             System.out.println("Collection is empty\n");
             return 0;
         }
         else {
-            int average = 0;
-            for(int i : array)
-                average += i;
-            System.out.printf("Average of all elements of collections %d\n", average);
+            float average = 0;
+            int sum = 0;
+            int size = 0;
+            while (true){
+                size++;
+                sum += current.data;
+                if(current.next == null)
+                    break;
+                current = current.next;
+            }
+            average = (float)sum / (float)size;
+            System.out.printf("Average of all elements of collections %.2f\n", average);
             return average;
         }
     }
 
     public void print() {
-        System.out.println("Elements of collection:\n"+array);
+        int i = 1;
+        current = current.head;
+        System.out.print("[");
+        while (true){
+            if (current.next == null) {
+                System.out.print(current.data);
+                break;
+            }
+            else
+                System.out.print(current.data + ", ");
+            current = current.next;
+            i++;
+        }
+        System.out.print("]\n");
     }
 }

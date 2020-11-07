@@ -10,7 +10,8 @@ public class Main {
         obj.delete(5);
         obj.print();
         obj.search(4);
-        obj.searchForIndex(0);
+        obj.searchForIndex(8);
+        obj.searchForIndex(9);
         obj.maxElem();
         obj.minElem();
         obj.average();
