@@ -1,14 +1,12 @@
 package LAB19;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileTask {
     private FileReader read;
     private FileWriter write;
     private FileWriter writeA;
-    private BufferedReader bufRead;
     private String str;
     private Scanner in;
 
@@ -17,7 +15,6 @@ public class FileTask {
             read = new FileReader("src/LAB19/text.txt");
             write = new FileWriter("src/LAB19/text.txt", false);
             writeA = new FileWriter("src/LAB19/text.txt", true);
-            bufRead = new BufferedReader(read);
             in = new Scanner(System.in);
         } catch (IOException e) {
             System.out.println(e.getMessage());
